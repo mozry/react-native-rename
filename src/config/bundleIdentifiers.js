@@ -11,17 +11,26 @@ export function bundleIdentifiers(currentAppName, newName, projectName, currentB
     {
       regex: currentBundleID,
       replacement: newBundleID,
-      paths: ['android/app/BUCK', 'android/app/build.gradle', 'android/app/src/main/AndroidManifest.xml'],
+      paths: [
+        'android/app/BUCK', 
+        'android/app/build.gradle', 
+        'android/app/src/main/AndroidManifest.xml'
+      ],
     },
     {
       regex: currentBundleID,
       replacement: newBundleID,
-      paths: [`${newBundlePath}/MainActivity.java`, `${newBundlePath}/MainApplication.java`],
+      paths: [
+        `${newBundlePath}/MainActivity.java`, 
+        `${newBundlePath}/MainApplication.java`
+      ],
     },
     {
       regex: lC_Ns_CurrentBundleID,
       replacement: lC_Ns_NewBundleID,
-      paths: [`${newBundlePath}/MainApplication.java`],
+      paths: [
+        `${newBundlePath}/MainApplication.java`
+      ],
     },
     {
       // App name (probably) doesn't start with `.`, but the bundle ID will
@@ -30,7 +39,9 @@ export function bundleIdentifiers(currentAppName, newName, projectName, currentB
       // replaced by an update to the app name with the same bundle ID
       regex: new RegExp(`(?!\\.)(.|^)${nS_CurrentAppName}`, 'g'),
       replacement: `$1${nS_NewName}`,
-      paths: [`${newBundlePath}/MainActivity.java`],
+      paths: [
+        `${newBundlePath}/MainActivity.java`
+      ],
     },
   ];
 }
